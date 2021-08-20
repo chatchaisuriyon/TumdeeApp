@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "611663451949",
+    "firebase_url": "https://tumdee-fdf42-default-rtdb.firebaseio.com",
+    "project_id": "tumdee-fdf42",
+    "storage_bucket": "tumdee-fdf42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611663451949:android:c069ca37ce6e554c76a5a4",
+        "android_client_info": {
+          "package_name": "com.kengkajorn.Tumdee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611663451949-169ociui0l5rlaha03jlkem2b1n47ts8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeIuzhLpE4jFWyZlpeFm43zDgkfJm30QU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611663451949-169ociui0l5rlaha03jlkem2b1n47ts8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
