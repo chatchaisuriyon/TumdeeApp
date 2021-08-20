@@ -9,15 +9,13 @@ import 'package:labroute/loginPage/loginPage_Google.dart';
 import 'package:labroute/provider/google_signin.dart';
 import 'package:labroute/screen/Profile.dart';
 import 'package:labroute/screen/display.dart';
-import 'package:labroute/screen/formscreen.dart';
-import 'package:labroute/screen/profile2.dart';
-import 'package:labroute/screen/home_screen.dart';
+import 'package:labroute/screen/add_screen.dart';
+import 'package:labroute/home/BottomNav_home_screen.dart';
 import 'package:animated_splash/animated_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'screen/profile3.dart';
-
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,8 +68,7 @@ class MyApp extends StatelessWidget {
           // 'bottom': (context) => FormScreen(),
           'addtumdee': (context) => FormScreen2(),
           'profile': (context) => ProfileScreen(),
-          'profile2': (context) => Profile(),
-          'profile3': (context) => TransactionsScreen(),
+          'profile3': (context) => ProfileScreen3(),
         },
       ));
 
@@ -98,7 +95,7 @@ class _PagecontollerState extends State<Pagecontoller> {
                   FirebaseFirestore.instance.collection("users").doc(uid).get(),
               builder: (context, AsyncSnapshot<DocumentSnapshot> doc) {
                 if (doc.hasData) {
-                  return Home(user: snap.data);
+                  return BottomNavHome(user: snap.data);
                 } else {
                   FirebaseFirestore.instance.collection("users").doc(uid).set({
                     "uid": snap.data.uid,
@@ -109,7 +106,7 @@ class _PagecontollerState extends State<Pagecontoller> {
                   });
 
                   // return DisplayScreen(user: snap.data);
-                  return Home(user: snap.data);
+                  return BottomNavHome(user: snap.data);
                 }
               },
             );

@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:labroute/model/user.dart';
 
 // ignore: must_be_immutable
-class TransactionsScreen extends StatelessWidget {
+class ProfileScreen3 extends StatelessWidget {
   final auth = FirebaseAuth.instance;
   final users = FirebaseFirestore.instance.collection("users");
   final User user;
   Users profile = Users();
-  TransactionsScreen({this.user});
+  ProfileScreen3({this.user});
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 

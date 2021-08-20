@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:labroute/home/helpPage.dart';
 import 'package:labroute/home/historyPage.dart';
 import 'package:labroute/model/user.dart';
-import 'package:labroute/screen/Home_Page.dart';
-import 'package:labroute/screen/formscreen.dart';
+import 'package:labroute/home/Home_Page.dart';
+import 'package:labroute/screen/add_screen.dart';
 
 import 'package:labroute/widget/sidemenu.dart';
 
 
-import 'profile3.dart';
+import 'package:labroute/screen/profile3.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -16,19 +16,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 @immutable
 // ignore: must_be_immutable
-class Home extends StatefulWidget {
+class BottomNavHome extends StatefulWidget {
   final auth = FirebaseAuth.instance;
   final users = FirebaseFirestore.instance.collection("users");
   // final users = FirebaseAuth.instance.currentUser;
   final User user;
   Users profile = Users();
-  Home({this.user});
+  BottomNavHome({this.user});
 
   @override
-  _HomeState createState() => _HomeState();
+  _BottomNavHomeState createState() => _BottomNavHomeState();
 }
 
-class _HomeState extends State<Home> {
+class _BottomNavHomeState extends State<BottomNavHome> {
   // Properties & Variables needed
   User user;
   @override
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
   final List<Widget> screens = [
     HomePage(),
     HistoryPage(),
-    TransactionsScreen(),
+    ProfileScreen3(),
     HelpPage(),
   ]; // to store nested tabs
   final PageStorageBucket bucket = PageStorageBucket();
@@ -174,7 +174,7 @@ class _HomeState extends State<Home> {
                     minWidth: 20,
                     onPressed: () {
                       setState(() {
-                        currentScreen = TransactionsScreen(
+                        currentScreen = ProfileScreen3(
                             user: widget
                                 .user); // if user taps on this dashboard tab will be active
                         currentTab = 2;

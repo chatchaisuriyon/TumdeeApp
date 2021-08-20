@@ -1,9 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-// import 'package:labroute/home/HomePage.dart';
-// import 'package:labroute/widget/BackHome.dart';
-// import 'package:labroute/widget/sidemenu.dart';
 
 class HistoryPage2 extends StatefulWidget {
   @override
@@ -77,8 +74,6 @@ class _HistoryPageState extends State<StatefulWidget> {
                       ))
                 ],
               )),
-        )
-        //drawer: SideMenu(),
-        );
+        ));
   }
 }

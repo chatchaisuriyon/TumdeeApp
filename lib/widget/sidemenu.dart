@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:labroute/screen/formscreen.dart';
-import 'package:labroute/screen/home_screen.dart';
+import 'package:labroute/screen/add_screen.dart';
+import 'package:labroute/home/BottomNav_home_screen.dart';
 import 'package:labroute/screen/profile3.dart';
 
 class SideMenu extends StatefulWidget {
@@ -38,7 +38,7 @@ class _State extends State<SideMenu> {
                   context,
                   MaterialPageRoute(
                       // builder: (context) => DisplayScreen(user: widget.user)));
-                      builder: (context) => Home(user: widget.user)));
+                      builder: (context) => BottomNavHome(user: widget.user)));
             },
           ),
           // ListTile(
@@ -91,7 +91,7 @@ class _State extends State<SideMenu> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          TransactionsScreen(user: widget.user)));
+                          ProfileScreen3(user: widget.user)));
             },
           ),
 

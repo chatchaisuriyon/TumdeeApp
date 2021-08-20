@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:labroute/widget/custom_slider.dart';
-import 'formscreen.dart';
-import 'kamkomPage.dart';
-import 'profile3.dart';
-import 'yt_Playlist.dart';
+import 'package:labroute/screen/add_screen.dart';
+import 'package:labroute/screen/kamkomPage.dart';
+import 'package:labroute/screen/profile3.dart';
+import 'package:labroute/screen/yt_Playlist.dart';
 
 class HomePage extends StatefulWidget {
   final auth = FirebaseAuth.instance;
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TransactionsScreen(
+                            builder: (context) => ProfileScreen3(
                                   user: widget.user,
                                 )),
                       );

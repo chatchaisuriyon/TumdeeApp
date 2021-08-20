@@ -4,7 +4,7 @@ import 'package:labroute/screen/display.dart';
 
 import 'loginPage_Google.dart';
 
-class Homepage extends StatelessWidget {
+class Errorpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
           body: StreamBuilder(

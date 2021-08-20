@@ -1,16 +1,9 @@
-// import 'dart:ffi';
-
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:labroute/provider/google_signin.dart';
-// import 'package:labroute/screen/display.dart';
-import 'package:labroute/screen/home_screen.dart';
-// import 'package:labroute/screen/login.dart';
-// import 'package:labroute/screen/register.dart';
-// import 'package:provider/provider.dart';
+import 'package:labroute/home/BottomNav_home_screen.dart';
+
 
 class LoginPage2 extends StatefulWidget {
   @override
@@ -153,7 +146,7 @@ class _LoginPage2State extends State<LoginPage2> {
                       context,
                       MaterialPageRoute(
                         // builder: (context) => DisplayScreen(
-                        builder: (context) => Home(
+                        builder: (context) => BottomNavHome(
                           user: user,
                         ),
                       ));
