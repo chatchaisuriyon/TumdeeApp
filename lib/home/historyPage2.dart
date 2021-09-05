@@ -40,36 +40,61 @@ class _HistoryPageState extends State<StatefulWidget> {
           child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView(
-                children: [
-                  Text(
-                    "รายละเอียดความดีที่คุณได้ทำ",
-                    style: TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 16, right: 16, top: 10, bottom: 14),
+                    child: Text(
+                      "รายละเอียดความดีที่คุณได้ทำ",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   // children: [
                   Container(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(14.0),
                       decoration: BoxDecoration(
                           color: Colors.yellow[200],
                           borderRadius: BorderRadius.circular(10)),
                       child: ListBody(
                         children: [
-                          Text('${data['title']}',
+                          Text('หัวข้อบันทึกความดี',
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold)),
+                                fontWeight: FontWeight.bold,
+                              )),
+                          Padding(
+                              padding:
+                                  EdgeInsets.only(left: 16, right: 16, top: 4),
+                              child: Text('${data['title']}',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Mitr'))),
                           SizedBox(
-                            height: 5,
+                            height: 18,
                           ),
-                          Text('${data['name']}',
-                              style: TextStyle(fontSize: 17)),
+                          Text('รายละเอียดเพิ่มเติม'),
+                          Padding(
+                              padding:
+                                  EdgeInsets.only(left: 16, right: 16, top: 4),
+                              child: Text('${data['name']}',
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Mitr'))),
                           SizedBox(
-                            height: 10,
+                            height: 18,
                           ),
-                          Text('${data['date']}',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold)),
+                          Text('วันที่บันทึกข้อมูล'),
+                          Padding(
+                              padding:
+                                  EdgeInsets.only(left: 16, right: 16, top: 4),
+                              child: Text('${data['date']}',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Mitr'))),
                         ],
                       ))
                 ],
