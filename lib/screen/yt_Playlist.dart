@@ -27,7 +27,7 @@ class _PlaylistState extends State<Playlist> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "คำคมธรรมะ",
+          "ฟังธรรม",
           style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Mitr'),
         ),
         leading: BackHome(),
@@ -48,13 +48,9 @@ class _PlaylistState extends State<Playlist> {
       ),
       // drawer: BackHome(),
       body: new FutureBuilder<List>(
-          future: getData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) void print;
-            (snapshot.error)
-                ? new ListVideo(list: snapshot.data)
-                : new CircularProgressIndicator();
-          }),
+        future: getData(),
+        builder: (context, snapshot) {},
+      ),
     );
   }
 }

@@ -451,27 +451,7 @@ class _HomePageState extends State<HomePage> {
                       'https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.6435-9/211087840_859056268044470_2864318519352900926_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeFknjFCheyLGJqoxQxIb4w51jcQxm9qFxTWNxDGb2oXFI9CPRnzTPyUb8MUgQlN5Wj5PcwPbInVgg2ZlcfpD5m7&_nc_ohc=GH0b8oCz-GEAX_JUpbq&tn=SQfD8uecItUX4IYs&_nc_ht=scontent.fbkk5-4.fna&oh=0773a2ea7eff3663b19ae81774b5f8d4&oe=6140D5C3'),
                   // fit: BoxFit.cover,
                 ))),
-        Container(
-            padding: const EdgeInsets.only(top: 16),
-            margin: EdgeInsets.only(left: 16, right: 16, top: 16),
-            width: size.width - 30,
-            height: size.height / 2.3,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey[300].withOpacity(0.8),
-                    spreadRadius: 3,
-                    blurRadius: 3,
-                    offset: Offset(1, 4), // changes position of shadow
-                  ),
-                ],
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                      'https://scontent.fbkk5-6.fna.fbcdn.net/v/t39.30808-6/237740583_4198837546860535_8973498222500151099_n.png?_nc_cat=102&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeG-aU5RsjGOLj8-GNSAulqEUybzTwbh8-dTJvNPBuHz5wswEznr9fUHVRjBmKSYlNOm4STE_xu3PabEC5qtgT0b&_nc_ohc=wM0_KWZO8OwAX-AyI8S&_nc_ht=scontent.fbkk5-6.fna&oh=11d9d5abb128b82f04f515aaa08ee9c1&oe=611EC534'),
-                  // fit: BoxFit.cover,
-                ))),
+
         Container(
             padding: const EdgeInsets.only(top: 16),
             margin: EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -514,6 +494,41 @@ class _HomePageState extends State<HomePage> {
                       'https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.6435-9/225096071_832047080810010_9155465596947951832_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeGKfWnVVPz5xmFAOlTVQsvF_TmQy94Fld39OZDL3gWV3XWFMJaaUlNzSCqF6VHMJd04MrDiDGu3NALpkrsEg74e&_nc_ohc=osfbN8wbgMUAX_TGh6w&_nc_ht=scontent.fbkk5-6.fna&oh=3ae0898610a949637e54a89bcf703078&oe=614203DC'),
                   // fit: BoxFit.cover,
                 ))),
+        Padding(
+          padding: EdgeInsets.only(top: 20),
+          child: Column(children: <Widget>[
+            Text(
+              'ทำดี ธรรมดี. © 2021\nSakonnakhon Rajabhat University. ',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12, color: Colors.black87),
+            ),
+            Container(
+              // padding: const EdgeInsets.only(top: 16),
+              margin:
+                  EdgeInsets.only(left: 140, right: 140, top: 8, bottom: 16),
+              // width: 100,
+              height: 40,
+
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[300].withOpacity(1),
+                      spreadRadius: 1.5,
+                      blurRadius: 2,
+                      offset: Offset(2, 4), // changes position of shadow
+                    ),
+                  ],
+                  image: DecorationImage(
+                    // fit: BoxFit.fill,
+                    image: NetworkImage(
+                        'https://eus-www.sway-cdn.com/s/1lXluYDa4tRr3PzF/images/BSJ5eF_kwT9opN?quality=640&allowAnimation=true'),
+                    // fit: BoxFit.cover,
+                  )),
+              // Column(children: <Widget>[
+            ),
+          ]),
+        )
         // ),
         // ),
         // Container(

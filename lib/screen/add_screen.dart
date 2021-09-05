@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:labroute/model/student.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:labroute/widget/BackHome.dart';
+// import 'package:buddhist_datetime_dateformat/buddhist_datetime_dateformat.dart';
 
 class FormScreen2 extends StatefulWidget {
   final User user;
@@ -23,17 +24,21 @@ class _FormScreen2State extends State<FormScreen2> {
       FirebaseFirestore.instance.collection('Tumdee');
   CollectionReference _userCollection =
       FirebaseFirestore.instance.collection('users');
+  DateTime now = new DateTime.now();
 
-  DateTime _selectedDate;
+  // DateTime _selectedDate;
   TextEditingController _textEditingController = TextEditingController();
 
   // DateTime pickedDate;
   @override
   void initState() {
     super.initState();
-    _textEditingController.text =
-        // DateFormat('yyyy/MM/dd – kk:mm').format(DateTime.now());
-        DateFormat('yyyy/MM/dd').format(DateTime.now());
+    // _textEditingController.text =
+    // DateFormat('yyyy/MM/dd – kk:mm').format(DateTime.now());
+    // DateFormat('dd/MMMM/yyyy').format(DateTime.now());
+    var formatter = DateFormat('วันที่ dd เดือนMMMM ปี yyyy', 'th');
+    _textEditingController.text = formatter.format(now);
+    // var onlyBuddhistYear = now.yearInBuddhistCalendar;
 
     // pickedDate = DateTime.now();
   }
@@ -74,7 +79,7 @@ class _FormScreen2State extends State<FormScreen2> {
                   ),
                   centerTitle: true, // this is all you need
                   leading: BackHome(),
-                  title: Text("หน้าบันทึกรายการความดี",
+                  title: Text("เพิ่มบันทึกความดี",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontFamily: 'Mitr')),
                 ),
@@ -93,10 +98,10 @@ class _FormScreen2State extends State<FormScreen2> {
                                   // crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "แบบฟอร์มเพิ่มรายการความดี",
+                                      "แบบฟอร์มเพิ่มบันทึกความดี",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(
@@ -258,22 +263,28 @@ class _FormScreen2State extends State<FormScreen2> {
         builder: (BuildContext context, Widget child) {
           return Theme(
             data: ThemeData.dark().copyWith(
-              colorScheme: ColorScheme.dark(
-                primary: Colors.yellow,
-                onPrimary: Colors.white,
+              colorScheme: ColorScheme.light(
+                primary: Colors.yellow[500],
+                primaryVariant: Colors.black,
+                secondary: Colors.black,
+                secondaryVariant: Colors.black,
+                onPrimary: Colors.black,
+                onSecondary: Colors.black,
+                background: Colors.black,
                 surface: Colors.blueGrey,
-                onSurface: Colors.white,
+                onSurface: Colors.black,
+                brightness: Brightness.light,
               ),
-              dialogBackgroundColor: Colors.blue[500],
+              dialogBackgroundColor: Colors.blue[300],
             ),
             child: child,
           );
         });
 
     if (newSelectedDate != null) {
-      _selectedDate = newSelectedDate;
+      now = newSelectedDate;
       _textEditingController
-        ..text = DateFormat('dd/MMMM/yyyy').format(_selectedDate)
+        ..text = DateFormat('วันที่ dd เดือน MMMM ปี yyyy').format(now)
         ..selection = TextSelection.fromPosition(TextPosition(
             offset: _textEditingController.text.length,
             affinity: TextAffinity.upstream));

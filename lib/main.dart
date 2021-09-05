@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:labroute/home/historyPage.dart';
 import 'package:labroute/home/helpPage.dart';
 import 'package:labroute/home/historyPage2.dart';
@@ -14,19 +17,22 @@ import 'package:labroute/home/BottomNav_home_screen.dart';
 import 'package:animated_splash/animated_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl_standalone.dart';
 
 import 'screen/profile3.dart';
 
-Future main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
-
+  await findSystemLocale();
   // Function duringSplash = () {
   //   print('Something background process');
   //   return 1;
   // };
+  Intl.defaultLocale = 'th';
+  initializeDateFormatting();
 
   Map<int, Widget> op = {1: MyApp()};
 

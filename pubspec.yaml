@@ -54,7 +54,12 @@ dependencies:
   animate_do: ^1.7.3
   flutter_webview_plugin: ^0.4.0
   http: 0.13.3
-  
+  # # buddhist_datetime_dateformat: ^1.0.6
+
+  # flutter_localizations: 
+  #   sdk: flutter
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

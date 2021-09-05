@@ -28,19 +28,19 @@ class _State extends State<SideMenu> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           _buildDrawerHeader(),
-          ListTile(
-            title: Text('หน้าแรก'),
-            leading: Icon(Icons.home_outlined),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              // Navigator.of(context).pushNamed('HomePage');
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      // builder: (context) => DisplayScreen(user: widget.user)));
-                      builder: (context) => BottomNavHome(user: widget.user)));
-            },
-          ),
+          // ListTile(
+          //   title: Text('หน้าแรก'),
+          //   leading: Icon(Icons.home_outlined),
+          //   trailing: Icon(Icons.arrow_right),
+          //   onTap: () {
+          //     // Navigator.of(context).pushNamed('HomePage');
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             // builder: (context) => DisplayScreen(user: widget.user)));
+          //             builder: (context) => BottomNavHome(user: widget.user)));
+          //   },
+          // ),
           // ListTile(
           //   title: Text('คะแนนความดี'),
           //   leading: Icon(Icons.recommend),
@@ -50,18 +50,18 @@ class _State extends State<SideMenu> {
           //   },
           // ),
 
-          ListTile(
-            title: Text('เพิ่มบันทึกความดี'),
-            leading: Icon(Icons.add_outlined),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              // Navigator.of(context).pushNamed('addtumdee');
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => FormScreen2(user: widget.user)));
-            },
-          ),
+          // ListTile(
+          //   title: Text('เพิ่มบันทึกความดี'),
+          //   leading: Icon(Icons.add_outlined),
+          //   trailing: Icon(Icons.arrow_right),
+          //   onTap: () {
+          //     // Navigator.of(context).pushNamed('addtumdee');
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             builder: (context) => FormScreen2(user: widget.user)));
+          //   },
+          // ),
 
           // ListTile(
           //   title: Text('ประวัติบันทึกความดี'),
@@ -73,7 +73,7 @@ class _State extends State<SideMenu> {
           // ),
 
           ListTile(
-            title: Text('แนะนำวิธีการใช้งาน'),
+            title: Text('ข้อมูลแอปพลิเคชัน'),
             leading: Icon(Icons.live_help_outlined),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
@@ -81,19 +81,19 @@ class _State extends State<SideMenu> {
             },
           ),
 
-          ListTile(
-            title: Text('ข้อมูลส่วนตัว'),
-            leading: Icon(Icons.account_box_outlined),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              // Navigator.of(context).pushNamed('profile3');
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          ProfileScreen3(user: widget.user)));
-            },
-          ),
+          // ListTile(
+          //   title: Text('ข้อมูลส่วนตัว'),
+          //   leading: Icon(Icons.account_box_outlined),
+          //   trailing: Icon(Icons.arrow_right),
+          //   onTap: () {
+          //     // Navigator.of(context).pushNamed('profile3');
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             builder: (context) =>
+          //                 ProfileScreen3(user: widget.user)));
+          //   },
+          // ),
 
           // ListTile(
           //   title: Text('หน้าแรก2'),

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class HistoryPage extends StatefulWidget {
   final User user;
   HistoryPage({this.user});
@@ -52,8 +51,16 @@ class _HistoryPageState extends State<StatefulWidget> {
                     margin:
                         const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                     child: ListTile(
-                      title: Text(document["fname"]),
-                      subtitle: Text(document["date"]),
+                      title: Text(document["fname"],
+                          style: TextStyle(
+                              // fontSize: 16,
+                              // fontWeight: FontWeight.bold,
+                              fontFamily: 'Mitr')),
+                      subtitle: Text(document["date"],
+                          style: TextStyle(
+                              // fontSize: 17,
+                              // fontWeight: FontWeight.bold,
+                              fontFamily: 'Mitr')),
                       leading: CircleAvatar(
                         backgroundImage:
                             AssetImage('assets/images/ic_launcher.png'),

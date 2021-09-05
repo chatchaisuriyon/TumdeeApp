@@ -8,19 +8,6 @@ class HelpPage extends StatefulWidget {
 }
 
 class _HelpPageState extends State<StatefulWidget> {
-  bool chk = true;
-  String s = "";
-  void loadbool() {
-    setState(() {
-      if (chk) {
-        s = 'เก่ง ขจร.';
-      } else {
-        s = '';
-      }
-      chk = !chk;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +26,9 @@ class _HelpPageState extends State<StatefulWidget> {
           ),
         ),
         leading: BackHome(),
+        centerTitle: true,
         title: Text(
-          "แนะนำวิธีการใช้งานแอปพลิเคชัน",
+          "ข้อมูลแอปพลิเคชัน",
           style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Mitr'),
         ),
       ),
@@ -48,14 +36,14 @@ class _HelpPageState extends State<StatefulWidget> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text("ขณะนี้แอปพลิเคชัน ",
+          Text("แอปพลิเคชันนี้",
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic)),
-          Text("อยู่ในระหว่างการพัฒนา",
+          Text("เป็นส่วนหนึ่งของรายวิชา โครงงานคอมพิวเตอร์",
               style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic)),
           Padding(padding: EdgeInsets.symmetric(vertical: 30)),
@@ -69,19 +57,13 @@ class _HelpPageState extends State<StatefulWidget> {
           Text("รหัสนักศึกษา 61102105102", style: TextStyle(fontSize: 18)),
           Text("สาขาวิชา วิทยาการคอมพิวเตอร์\n",
               style: TextStyle(fontSize: 18)),
-          Text("แอปพลิเคชันนี้",
-              style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
-          Text("เป็นส่วนหนึ่งของรายวิชา โครงงานคอมพิวเตอร์.",
-              style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
-          Text(s, style: TextStyle(fontSize: 22)),
+          // Text("แอปพลิเคชันนี้",
+          //     style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
+          // Text("เป็นส่วนหนึ่งของรายวิชา โครงงานคอมพิวเตอร์.",
+          //     style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
+          // Text(s, style: TextStyle(fontSize: 22)),
         ],
       )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: loadbool,
-        child: Icon(Icons.navigation),
-        backgroundColor: Colors.yellow,
-      ),
-      //drawer: SideMenu(),
     );
   }
 }
