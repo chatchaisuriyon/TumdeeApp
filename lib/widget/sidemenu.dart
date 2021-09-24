@@ -63,14 +63,14 @@ class _State extends State<SideMenu> {
           //   },
           // ),
 
-          // ListTile(
-          //   title: Text('ประวัติบันทึกความดี'),
-          //   leading: Icon(Icons.list_alt),
-          //   trailing: Icon(Icons.arrow_right),
-          //   onTap: () {
-          //     Navigator.of(context).pushNamed('historypage');
-          //   },
-          // ),
+          ListTile(
+            title: Text('วิธีการใช้งานแอปพลิเคชัน'),
+            leading: Icon(Icons.list_alt),
+            trailing: Icon(Icons.arrow_right),
+            onTap: () {
+              // Navigator.of(context).pushNamed('historypage');
+            },
+          ),
 
           ListTile(
             title: Text('ข้อมูลแอปพลิเคชัน'),

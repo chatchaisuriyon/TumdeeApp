@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class HistoryPage extends StatefulWidget {
+  final auth = FirebaseAuth.instance;
+  final users = FirebaseFirestore.instance.collection("users");
   final User user;
   HistoryPage({this.user});
   @override
@@ -10,8 +13,15 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<StatefulWidget> {
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  CollectionReference _studentCollection =
+      FirebaseFirestore.instance.collection('Tumdee');
+  CollectionReference _userCollection =
+      FirebaseFirestore.instance.collection('users');
   @override
   Widget build(BuildContext context) {
+    var auth = FirebaseAuth.instance;
+    
     return Scaffold(
       appBar: AppBar(
         centerTitle: true, // this is all you need
@@ -35,7 +45,7 @@ class _HistoryPageState extends State<StatefulWidget> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection("Tumdee")
-            // .where("uid", isEqualTo: widget.user.uid)
+            .where("uid", isEqualTo: auth.currentUser.uid)
             .orderBy("date", descending: true) //จัดเรียงข้อมูล
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {

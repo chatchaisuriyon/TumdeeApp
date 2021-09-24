@@ -235,21 +235,22 @@ class _FormScreen2State extends State<FormScreen2> {
 
                                               _userCollection
                                                   .doc(widget.user.uid)
-                                                  .update({
-                                                "score": score.toString()
-                                              });
+                                                  .update({"score": score});
                                               Navigator.popAndPushNamed(
                                                   context, 'historypage');
 
                                               Flushbar(
                                                   title:
-                                                      'เพิ่มข้อมูลความดีเรียบร้อยแล้ว',
+                                                      'เพิ่มข้อมูลความดีเรียบร้อยแล้ว✅ '
+                                                      '+1 ความดี',
                                                   message:
                                                       'โปรดกลับไปยังหน้าหลักและกลับมายังหน้านี้อีกครั้ง\nหากไม่พบข้อมูล',
                                                   duration:
-                                                      Duration(seconds: 4),
-                                                  icon:
-                                                      Icon(Icons.info_outline))
+                                                      Duration(seconds: 6),
+                                                  icon: Icon(
+                                                    Icons.info_outline,
+                                                    color: Colors.yellow,
+                                                  ))
                                                 ..show(context);
                                               setState(() {});
                                             }

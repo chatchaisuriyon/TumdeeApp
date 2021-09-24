@@ -56,6 +56,8 @@ dependencies:
   http: 0.13.3
   flushbar: ^1.10.4
   youtube_player_flutter: ^8.0.0
+
+  url_launcher: ^6.0.0
   # flutter_map: 0.5.2
   # # buddhist_datetime_dateformat: ^1.0.6
 

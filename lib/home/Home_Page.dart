@@ -8,6 +8,7 @@ import 'package:labroute/screen/add_screen.dart';
 import 'package:labroute/screen/kamkomPage.dart';
 import 'package:labroute/screen/profile3.dart';
 import 'package:labroute/screen/yt_Playlist.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   final auth = FirebaseAuth.instance;
@@ -382,14 +383,21 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: 15,
         ),
-        CustomSliderWidget(
-          items: [
-            "assets/images/slide_3.jpg",
-            "assets/images/slide_4.jpg",
-            "assets/images/slide_1.jpg.png",
-            "assets/images/slide_2.jpg",
-          ],
-        ),
+        Expanded(
+            child: GestureDetector(
+                onTap: () {
+                  // Navigator.of(context).pushNamed('addtumdee');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => KamkomPage()));
+                },
+                child: CustomSliderWidget(
+                  items: [
+                    "assets/images/slide_3.jpg",
+                    "assets/images/slide_4.jpg",
+                    "assets/images/slide_1.jpg.png",
+                    "assets/images/slide_2.jpg",
+                  ],
+                ))),
         Padding(
           padding: EdgeInsets.only(
             left: 16,
@@ -412,27 +420,32 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.black87),
           ),
         ),
-        Container(
-            padding: const EdgeInsets.only(top: 16),
-            margin: EdgeInsets.only(left: 16, right: 16, top: 16),
-            width: size.width - 30,
-            height: 160,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey[300].withOpacity(0.8),
-                    spreadRadius: 3,
-                    blurRadius: 3,
-                    offset: Offset(1, 4), // changes position of shadow
-                  ),
-                ],
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://scontent.fbkk5-5.fna.fbcdn.net/v/t1.6435-9/235493939_104144595316858_1747477014279677145_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeGYSOkIxXDmN8JrdwuVKJ1yGmkeUJDHfHsaaR5QkMd8e11vdoZGk1wJ5wFXtobksUFmh7rLJPK_WC9t-J6ikASq&_nc_ohc=_idwOUS-KIQAX9xr8jp&_nc_ht=scontent.fbkk5-5.fna&oh=0e86a97d76423aadafd96537fdf12a3a&oe=617192E7'),
-                  // fit: BoxFit.cover,
-                ))),
+        Expanded(
+            child: GestureDetector(
+                onTap: () {
+                  launch('https://m.facebook.com/TumdeeApp');
+                },
+                child: Container(
+                    padding: const EdgeInsets.only(top: 16),
+                    margin: EdgeInsets.only(left: 16, right: 16, top: 16),
+                    width: size.width - 30,
+                    height: 160,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[300].withOpacity(0.8),
+                            spreadRadius: 3,
+                            blurRadius: 3,
+                            offset: Offset(1, 4), // changes position of shadow
+                          ),
+                        ],
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              'https://scontent.fbkk5-5.fna.fbcdn.net/v/t1.6435-9/235493939_104144595316858_1747477014279677145_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeGYSOkIxXDmN8JrdwuVKJ1yGmkeUJDHfHsaaR5QkMd8e11vdoZGk1wJ5wFXtobksUFmh7rLJPK_WC9t-J6ikASq&_nc_ohc=_idwOUS-KIQAX9xr8jp&_nc_ht=scontent.fbkk5-5.fna&oh=0e86a97d76423aadafd96537fdf12a3a&oe=617192E7'),
+                          // fit: BoxFit.cover,
+                        ))))),
         Container(
             padding: const EdgeInsets.only(top: 16),
             margin: EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -508,7 +521,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               // padding: const EdgeInsets.only(top: 16),
               margin:
-                  EdgeInsets.only(left: 140, right: 140, top: 8, bottom: 16),
+                  EdgeInsets.only(left: 140, right: 140, top: 8, bottom: 50),
               // width: 100,
               height: 40,
 

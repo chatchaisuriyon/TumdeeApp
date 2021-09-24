@@ -35,21 +35,22 @@ void main() async {
   Intl.defaultLocale = 'th';
   initializeDateFormatting();
 
-  Map<int, Widget> op = {1: MyApp()};
-
-  runApp(MaterialApp(
-    home: AnimatedSplash(
-      imagePath: 'assets/images/tumdeelogo.png',
-      home: MyApp(),
-      // customFunction: duringSplash,
-      duration: 3000,
-      type: AnimatedSplashType.BackgroundProcess,
-      outputAndHome: op,
-    ),
-  ));
+  // Map<int, Widget> op = {1: MyApp()};
 
   runApp(MyApp());
 }
+//     home: AnimatedSplash(
+//       imagePath: 'assets/images/tumdeelogo.png',
+//       home: MyApp(),
+//       // customFunction: duringSplash,
+//       duration: 3000,
+//       type: AnimatedSplashType.BackgroundProcess,
+//       outputAndHome: op,
+//     ),
+//   ));
+
+//   runApp(MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   static final String title = 'ทำดี ธรรมดี';

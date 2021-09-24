@@ -165,7 +165,7 @@ class ProfileScreen3 extends StatelessWidget {
                     }),
               ),
               Text(
-                "🏆 อันดับผู้ใช้งานที่มีแต้มบุญสูงสุด 🏆",
+                "🏆 อันดับผู้ใช้งานที่มีคะแนนความดีสูงสุด 🏆",
                 style: TextStyle(
                     // fontWeight: FontWeight.bold,
                     color: Colors.black,
