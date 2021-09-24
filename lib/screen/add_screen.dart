@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:labroute/home/historyPage.dart';
 import 'package:labroute/model/student.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:labroute/widget/BackHome.dart';
@@ -36,7 +38,7 @@ class _FormScreen2State extends State<FormScreen2> {
     // _textEditingController.text =
     // DateFormat('yyyy/MM/dd – kk:mm').format(DateTime.now());
     // DateFormat('dd/MMMM/yyyy').format(DateTime.now());
-    var formatter = DateFormat('วันที่ dd เดือนMMMM ปี yyyy', 'th');
+    var formatter = DateFormat('วันที่ dd เดือน MMMM ปี yyyy', 'th');
     _textEditingController.text = formatter.format(now);
     // var onlyBuddhistYear = now.yearInBuddhistCalendar;
 
@@ -233,9 +235,23 @@ class _FormScreen2State extends State<FormScreen2> {
 
                                               _userCollection
                                                   .doc(widget.user.uid)
-                                                  .update({"score": score});
+                                                  .update({
+                                                "score": score.toString()
+                                              });
+                                              Navigator.popAndPushNamed(
+                                                  context, 'historypage');
 
-                                              Navigator.pop(context);
+                                              Flushbar(
+                                                  title:
+                                                      'เพิ่มข้อมูลความดีเรียบร้อยแล้ว',
+                                                  message:
+                                                      'โปรดกลับไปยังหน้าหลักและกลับมายังหน้านี้อีกครั้ง\nหากไม่พบข้อมูล',
+                                                  duration:
+                                                      Duration(seconds: 4),
+                                                  icon:
+                                                      Icon(Icons.info_outline))
+                                                ..show(context);
+                                              setState(() {});
                                             }
                                           }),
                                     )

@@ -7,12 +7,9 @@ import 'package:labroute/screen/add_screen.dart';
 
 import 'package:labroute/widget/sidemenu.dart';
 
-
 import 'package:labroute/screen/profile3.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-
 
 @immutable
 // ignore: must_be_immutable
@@ -148,6 +145,7 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                       padding: EdgeInsets.only(left: 17, top: 26),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
                           // Icon(
                           //   Icons.history,

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:labroute/screen/Video_scren.dart';
 import 'package:labroute/widget/custom_slider.dart';
 import 'package:labroute/screen/add_screen.dart';
 import 'package:labroute/screen/kamkomPage.dart';
@@ -304,13 +305,15 @@ class _HomePageState extends State<HomePage> {
                       child: GestureDetector(
                     onTap: () {
                       // Navigator.of(context).pushNamed('addtumdee');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Playlist(
-                                  url:
-                                      "https://flutter-youtube-tumdee.herokuapp.com/",
-                                  title: "Flutter")));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => Playlist(
+                      //             url:
+                      //                 "https://flutter-youtube-tumdee.herokuapp.com/",
+                      //             title: "Flutter")));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => VideoPage()));
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 8),
@@ -427,7 +430,7 @@ class _HomePageState extends State<HomePage> {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                      'https://scontent.fbkk5-3.fna.fbcdn.net/v/t1.6435-9/226534254_104178655313452_7822950744357451989_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeEcAUK19go9GxWIBtphYoOVx_t8XCpoudTH-3xcKmi51FgBw2BhSykmz98cv3F2N4SM8fkt_OX1HE-vEBn8owKI&_nc_ohc=rYJjTrcAyf4AX_Vo_qt&_nc_ht=scontent.fbkk5-3.fna&oh=8097829f3b2317e008cc60b10a57d07d&oe=613FD809'),
+                      'https://scontent.fbkk5-5.fna.fbcdn.net/v/t1.6435-9/235493939_104144595316858_1747477014279677145_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeGYSOkIxXDmN8JrdwuVKJ1yGmkeUJDHfHsaaR5QkMd8e11vdoZGk1wJ5wFXtobksUFmh7rLJPK_WC9t-J6ikASq&_nc_ohc=_idwOUS-KIQAX9xr8jp&_nc_ht=scontent.fbkk5-5.fna&oh=0e86a97d76423aadafd96537fdf12a3a&oe=617192E7'),
                   // fit: BoxFit.cover,
                 ))),
         Container(
@@ -448,7 +451,7 @@ class _HomePageState extends State<HomePage> {
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   image: NetworkImage(
-                      'https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.6435-9/211087840_859056268044470_2864318519352900926_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeFknjFCheyLGJqoxQxIb4w51jcQxm9qFxTWNxDGb2oXFI9CPRnzTPyUb8MUgQlN5Wj5PcwPbInVgg2ZlcfpD5m7&_nc_ohc=GH0b8oCz-GEAX_JUpbq&tn=SQfD8uecItUX4IYs&_nc_ht=scontent.fbkk5-4.fna&oh=0773a2ea7eff3663b19ae81774b5f8d4&oe=6140D5C3'),
+                      'https://scontent.fbkk5-5.fna.fbcdn.net/v/t39.30808-6/242610354_1829272697275637_3455910038477677124_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEV7Lg4S4ejaD61Juhx5cHQH9-75AHUebof37vkAdR5us8SpBXpn186YeEKxSiZI9DKeLO6CFD5tMC3Itj0yge9&_nc_ohc=AXB5JO-jtk0AX9ikq8w&tn=jdtvU9trbGifRpud&_nc_ht=scontent.fbkk5-5.fna&oh=9f9de0e737ed5d90abe11b4ca9705073&oe=61520BE1'),
                   // fit: BoxFit.cover,
                 ))),
 
@@ -456,7 +459,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(top: 16),
             margin: EdgeInsets.only(left: 16, right: 16, top: 16),
             width: size.width - 30,
-            height: size.height / 2.3,
+            height: size.height / 1.8,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
@@ -470,14 +473,14 @@ class _HomePageState extends State<HomePage> {
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   image: NetworkImage(
-                      'https://scontent.fbkk5-1.fna.fbcdn.net/v/t1.6435-9/233600464_832967007384684_7382334395645421642_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeFxr3GSz0VoeMPx13d5W4m626WvbEQXHHzbpa9sRBccfAcrU27bRqTrFHzakM6auUIbY8lTkoKzvH-vEHhaswxC&_nc_ohc=RJs1ZTLeK98AX-TFYAc&_nc_ht=scontent.fbkk5-1.fna&oh=9130cda44924a8019847090139614c1f&oe=61412AD7'),
+                      'https://scontent.fbkk5-5.fna.fbcdn.net/v/t1.6435-9/242262919_3022049524742270_2926032353966387856_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEWTSbfFEfUx4tMSeqb0QzimozbSrHnDHSajNtKsecMdKl7EqqrvnO06DoTU1hhfhwuPRMtnt0JZmo637201zh1&_nc_ohc=pq4KIIVuVMYAX_UdO0Z&_nc_ht=scontent.fbkk5-5.fna&oh=78a5eaffd51e7321c08dcb710996bf91&oe=6171E9F7'),
                   // fit: BoxFit.cover,
                 ))),
         Container(
             padding: const EdgeInsets.only(top: 16),
             margin: EdgeInsets.only(left: 16, right: 16, top: 16),
             width: size.width - 30,
-            height: 150,
+            height: size.height / 2.2,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
@@ -491,7 +494,7 @@ class _HomePageState extends State<HomePage> {
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   image: NetworkImage(
-                      'https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.6435-9/225096071_832047080810010_9155465596947951832_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeGKfWnVVPz5xmFAOlTVQsvF_TmQy94Fld39OZDL3gWV3XWFMJaaUlNzSCqF6VHMJd04MrDiDGu3NALpkrsEg74e&_nc_ohc=osfbN8wbgMUAX_TGh6w&_nc_ht=scontent.fbkk5-6.fna&oh=3ae0898610a949637e54a89bcf703078&oe=614203DC'),
+                      'https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.6435-9/242274875_857346528280065_443640045813603257_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeGlCkHOixC9tuExgR4RxQEdm865tVLxuGSbzrm1UvG4ZH0iQYRruYQ0cw9CDW1MLcRyVaTvqTNE7wO7Apy9TcrT&_nc_ohc=VSUl67ZYPCMAX9mW8i4&_nc_ht=scontent.fbkk5-4.fna&oh=1c6055d33de0fb05ca9d04c488de0ec3&oe=6173B2B9'),
                   // fit: BoxFit.cover,
                 ))),
         Padding(
