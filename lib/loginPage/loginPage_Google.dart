@@ -1,13 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:labroute/home/BottomNav_home_screen.dart';
 
-
 class LoginPage2 extends StatefulWidget {
   @override
   _LoginPage2State createState() => _LoginPage2State();
+  final User user;
+  // Users profile = Users();
+  LoginPage2({this.user});
 }
 
 class _LoginPage2State extends State<LoginPage2> {
@@ -21,8 +24,8 @@ class _LoginPage2State extends State<LoginPage2> {
           children: <Widget>[
             //
             buildLogo(),
-            buildText1(),
-            buildText2(),
+            // buildText1(),
+            // buildText2(),
             buildButton(),
           ],
         ),
@@ -32,40 +35,41 @@ class _LoginPage2State extends State<LoginPage2> {
 
   Positioned buildLogo() {
     return Positioned(
-      top: 180,
-      left: 100,
-      height: 170,
+      top: 265,
+      left: 53,
+      // height: 0,
       // alignment: Alignment.center,
       child: Image.asset(
-        'assets/images/tumdeelogo.png',
+        'assets/images/tumdeeSplash.png',
+        width: 286,
         fit: BoxFit.fitHeight,
       ),
     );
   }
 
-  Positioned buildText1() {
-    return Positioned(
-      top: 340,
-      left: 90,
-      width: 210,
-      // alignment: Alignment.center,
-      child: Image.asset(
-        'assets/images/tumdee.png',
-      ),
-    );
-  }
+  // Positioned buildText1() {
+  //   return Positioned(
+  //     top: 345,
+  //     left: 90,
+  //     width: 210,
+  //     // alignment: Alignment.center,
+  //     child: Image.asset(
+  //       'assets/images/tumdee.png',
+  //     ),
+  //   );
+  // }
 
-  Positioned buildText2() {
-    return Positioned(
-      top: 400,
-      left: 50,
-      width: 285,
-      // alignment: Alignment.center,
-      child: Image.asset(
-        'assets/images/tumdee2.png',
-      ),
-    );
-  }
+  // Positioned buildText2() {
+  //   return Positioned(
+  //     top: 405,
+  //     left: 53,
+  //     width: 285,
+  //     // alignment: Alignment.center,
+  //     child: Image.asset(
+  //       'assets/images/tumdee2.png',
+  //     ),
+  //   );
+  // }
 
   final googleSignIn = GoogleSignIn();
 
@@ -94,7 +98,7 @@ class _LoginPage2State extends State<LoginPage2> {
     return Positioned(
       right: 20,
       left: 20,
-      bottom: 100,
+      bottom: 130,
       child: Container(
         height: 120,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -135,8 +139,13 @@ class _LoginPage2State extends State<LoginPage2> {
                 FontAwesomeIcons.google,
                 // color: Colors.red,
               ),
-              label: Text("เข้าสู่ระบบด้วยบัญชี Google",
-                  style: TextStyle(fontSize: 18)),
+              label: Text("  เข้าสู่ระบบด้วยบัญชี Google ",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Mitr',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[800],
+                  )),
               onPressed: () async {
                 await googleLogin().then((user) {
                   print("success");
@@ -150,10 +159,22 @@ class _LoginPage2State extends State<LoginPage2> {
                           user: user,
                         ),
                       ));
+
                   //Navigator.pushNamed(context, 'HomePage');
                 }).catchError((e) {
                   print('$e');
                 });
+                // final auth = FirebaseAuth.instance;
+                // Flushbar(
+                //     title: 'สวัสดี 🙏 ' + auth.currentUser.displayName,
+                //     message: 'ยินดีต้อนรับเข้าสู่แอปพลิเคชัน "ทำดี ธรรมดี"',
+                //     duration: Duration(seconds: 4),
+                //     icon: Icon(
+                //       Icons.info_outline,
+                //       color: Colors.yellow,
+                //     ))
+                //   ..show(context);
+                // setState(() {});
               },
             ),
             // ),

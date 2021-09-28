@@ -14,8 +14,8 @@ import 'package:labroute/screen/Profile.dart';
 import 'package:labroute/screen/display.dart';
 import 'package:labroute/screen/add_screen.dart';
 import 'package:labroute/home/BottomNav_home_screen.dart';
-import 'package:animated_splash/animated_splash.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:labroute/screen/tutorial.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl_standalone.dart';
 
@@ -24,36 +24,27 @@ import 'screen/profile3.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await SystemChrome.setEnabledSystemUIOverlays(
+      [SystemUiOverlay.top, SystemUiOverlay.bottom]);
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   await findSystemLocale();
-  // Function duringSplash = () {
-  //   print('Something background process');
-  //   return 1;
-  // };
+
   Intl.defaultLocale = 'th';
   initializeDateFormatting();
 
-  // Map<int, Widget> op = {1: MyApp()};
-
   runApp(MyApp());
 }
-//     home: AnimatedSplash(
-//       imagePath: 'assets/images/tumdeelogo.png',
-//       home: MyApp(),
-//       // customFunction: duringSplash,
-//       duration: 3000,
-//       type: AnimatedSplashType.BackgroundProcess,
-//       outputAndHome: op,
-//     ),
-//   ));
 
-//   runApp(MyApp());
-// }
-
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   static final String title = 'ทำดี ธรรมดี';
+  final String score = '0';
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  // CollectionReference _userCollection =
+  //     FirebaseFirestore.instance.collection('users');
+  DateTime now = new DateTime.now();
 
   // This widget is the root of your application.
   @override
@@ -77,12 +68,10 @@ class MyApp extends StatelessWidget {
           'addtumdee': (context) => FormScreen2(),
           'profile': (context) => ProfileScreen(),
           'profile3': (context) => ProfileScreen3(),
+          'tutorial': (context) => VideoList2(),
         },
       ));
-
-  // return materialApp;
 }
-// }
 
 class Pagecontoller extends StatefulWidget {
   @override
@@ -90,6 +79,8 @@ class Pagecontoller extends StatefulWidget {
 }
 
 class _PagecontollerState extends State<Pagecontoller> {
+  // get _userCollection => FirebaseFirestore.instance.collection('users');
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -99,25 +90,29 @@ class _PagecontollerState extends State<Pagecontoller> {
             String uid = snap.data.uid;
 
             return FutureBuilder(
-              future:
-                  FirebaseFirestore.instance.collection("users").doc(uid).get(),
-              builder: (context, AsyncSnapshot<DocumentSnapshot> doc) {
-                if (doc.hasData) {
-                  return BottomNavHome(user: snap.data);
-                } else {
-                  FirebaseFirestore.instance.collection("users").doc(uid).set({
-                    "uid": snap.data.uid,
-                    "username": snap.data.displayName,
-                    "email": snap.data.email,
-                    "photoUrl": snap.data.photoURL,
-                    "score": snap.data.reload(),
-                  });
-
-                  // return DisplayScreen(user: snap.data);
-                  return BottomNavHome(user: snap.data);
-                }
-              },
-            );
+                future: FirebaseFirestore.instance
+                    .collection("users")
+                    .doc(uid)
+                    .get(),
+                builder: (context,
+                    AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> doc) {
+                  if (doc.hasData) {
+                    return BottomNavHome(user: snap.data);
+                  } else {
+                    FirebaseFirestore.instance
+                        .collection("users")
+                        .doc(uid)
+                        .set({
+                      "uid": snap.data.uid,
+                      "username": snap.data.displayName,
+                      "email": snap.data.email,
+                      "photoUrl": snap.data.photoURL,
+                      "score": 0,
+                      'LastLogin': DateTime.now(),
+                    });
+                    return BottomNavHome(user: snap.data);
+                  }
+                });
           } else {
             return LoginPage2();
           }

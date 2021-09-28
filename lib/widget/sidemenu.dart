@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flushbar/flushbar.dart';
+// import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:labroute/screen/add_screen.dart';
@@ -20,51 +22,26 @@ class _State extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: <Widget>[
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
           _buildDrawerHeader(),
-          // ListTile(
-          //   title: Text('หน้าแรก'),
-          //   leading: Icon(Icons.home_outlined),
-          //   trailing: Icon(Icons.arrow_right),
-          //   onTap: () {
-          //     // Navigator.of(context).pushNamed('HomePage');
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             // builder: (context) => DisplayScreen(user: widget.user)));
-          //             builder: (context) => BottomNavHome(user: widget.user)));
-          //   },
-          // ),
-          // ListTile(
-          //   title: Text('คะแนนความดี'),
-          //   leading: Icon(Icons.recommend),
-          //   trailing: Icon(Icons.arrow_right),
-          //   onTap: () {
-          //     Navigator.of(context).pushReplacementNamed('HomePage');
-          //   },
-          // ),
-
-          // ListTile(
-          //   title: Text('เพิ่มบันทึกความดี'),
-          //   leading: Icon(Icons.add_outlined),
-          //   trailing: Icon(Icons.arrow_right),
-          //   onTap: () {
-          //     // Navigator.of(context).pushNamed('addtumdee');
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (context) => FormScreen2(user: widget.user)));
-          //   },
-          // ),
+          
 
           ListTile(
-            title: Text('วิธีการใช้งานแอปพลิเคชัน'),
+            title: Text(
+              'วิธีการใช้งานแอปพลิเคชัน',
+              style: TextStyle(
+                fontFamily: 'Mitr',
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+                color: Colors.grey[700],
+              ),
+            ),
             leading: Icon(Icons.list_alt),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
@@ -73,7 +50,15 @@ class _State extends State<SideMenu> {
           ),
 
           ListTile(
-            title: Text('ข้อมูลแอปพลิเคชัน'),
+            title: Text(
+              'ข้อมูลแอปพลิเคชัน',
+              style: TextStyle(
+                fontFamily: 'Mitr',
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+                color: Colors.grey[700],
+              ),
+            ),
             leading: Icon(Icons.live_help_outlined),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
@@ -81,54 +66,116 @@ class _State extends State<SideMenu> {
             },
           ),
 
-          // ListTile(
-          //   title: Text('ข้อมูลส่วนตัว'),
-          //   leading: Icon(Icons.account_box_outlined),
-          //   trailing: Icon(Icons.arrow_right),
-          //   onTap: () {
-          //     // Navigator.of(context).pushNamed('profile3');
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (context) =>
-          //                 ProfileScreen3(user: widget.user)));
-          //   },
-          // ),
-
-          // ListTile(
-          //   title: Text('หน้าแรก2'),
-          //   leading: Icon(Icons.account_box_outlined),
-          //   trailing: Icon(Icons.arrow_right),
-          //   onTap: () {
-          //     // Navigator.of(context).pushNamed('profile3');
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (context) => Home(user: widget.user)));
-          //   },
-          // ),
-
+        
           ListTile(
-              title: Text('ออกจากระบบ'),
+              title: Text(
+                'ออกจากระบบ',
+                style: TextStyle(
+                  fontFamily: 'Mitr',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.grey[700],
+                ),
+              ),
               leading: Icon(Icons.exit_to_app),
               trailing: Icon(Icons.arrow_right),
               onTap: () async {
-                if (await googleSignIn.isSignedIn()) {
-                  googleSignIn.signOut();
-                }
+                
+                showDialog(
+                    builder: (ctxt) {
+                      return AlertDialog(
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(24.0, 10.0, 24.0, 10.0),
+                        title: Column(children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 30,
+                              // top: 26,
+                            ),
+                          ),
+                          Icon(Icons.exit_to_app, size: 30),
+                          Text(
+                            ' ออกจากระบบ',
+                            style: TextStyle(
+                              fontFamily: 'Mitr',
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          )
+                        ]),
+                        content: Text(
+                          "คุณต้องการออกจากระบบใช่หรือไม่?",
+                          style: TextStyle(
+                            fontFamily: 'Mitr',
+                            // fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
 
-                auth.signOut().then(
-                  (value) {
-                    print("sign out success");
-                    Navigator.of(context).popUntil((route) => route.isFirst);
-                  },
-                ).catchError((e) {
-                  print(e);
-                });
-              }),
-        ],
-      ),
-    );
+                        actions: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                  // primary: Colors.red,
+                                  onPrimary: Colors.red,
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                child: Text(
+                                  "ยกเลิก",
+                                  style: TextStyle(
+                                    fontFamily: 'Mitr',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.red,
+                                    // primary: Colors.green,
+                                    onPrimary: Colors.white,
+                                    textStyle: const TextStyle(
+                                        fontSize: 16, color: Colors.white),
+                                  ),
+                                  child: Text(
+                                    "ตกลง",
+                                    style: TextStyle(
+                                      fontFamily: 'Mitr',
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  onPressed: () async {
+                                    if (await googleSignIn.isSignedIn()) {
+                                      googleSignIn.signOut();
+                                    }
+
+                                    auth.signOut().then(
+                                      (value) {
+                                        print("sign out success");
+                                        Navigator.of(context)
+                                            .popUntil((route) => route.isFirst);
+                                      },
+                                    ).catchError(
+                                      (e) {
+                                        print(e);
+                                      },
+                                    );
+                                  })
+                            ],
+                          ),
+                        ],
+                        // )
+                      );
+                    },
+                    context: context);
+              })
+        ])
+        );
   }
 
   Widget _buildDrawerHeader() {
@@ -139,9 +186,6 @@ class _State extends State<SideMenu> {
         gradient:
             RadialGradient(colors: [Colors.white, Colors.yellow], radius: 0.6),
       ),
-
-      // accountName: Text('ชัชชัย สุริยนต์'),
-      // accountEmail: Text('Chatchai.su61@snru.ac.th'),
       child: UserAccountsDrawerHeader(
         margin: EdgeInsets.zero,
         accountName: Text(

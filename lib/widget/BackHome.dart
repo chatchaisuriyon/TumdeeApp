@@ -9,6 +9,7 @@ class BackHome extends StatelessWidget {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
+              MediaQuery.of(context).orientation;
             });
       },
     );

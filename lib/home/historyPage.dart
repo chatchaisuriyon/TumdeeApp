@@ -14,15 +14,13 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<StatefulWidget> {
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  CollectionReference _studentCollection =
-      FirebaseFirestore.instance.collection('Tumdee');
-  CollectionReference _userCollection =
-      FirebaseFirestore.instance.collection('users');
+
   @override
   Widget build(BuildContext context) {
     var auth = FirebaseAuth.instance;
-    
+
     return Scaffold(
+      backgroundColor: Colors.yellow,
       appBar: AppBar(
         centerTitle: true, // this is all you need
         flexibleSpace: Container(
@@ -63,17 +61,20 @@ class _HistoryPageState extends State<StatefulWidget> {
                     child: ListTile(
                       title: Text(document["fname"],
                           style: TextStyle(
-                              // fontSize: 16,
-                              // fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(8, 8, 8, 80),
                               fontFamily: 'Mitr')),
                       subtitle: Text(document["date"],
+
+                          // subtitle: Text(document["lname"],
                           style: TextStyle(
                               // fontSize: 17,
                               // fontWeight: FontWeight.bold,
                               fontFamily: 'Mitr')),
                       leading: CircleAvatar(
                         backgroundImage:
-                            AssetImage('assets/images/ic_launcher.png'),
+                            AssetImage('assets/images/ic_launcher2.png'),
                         radius: 25,
                       ),
                       onTap: () {

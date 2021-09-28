@@ -28,9 +28,9 @@ class _HistoryPageState extends State<StatefulWidget> {
             ),
           ),
           centerTitle: true, // thi
-          leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(Icons.arrow_back)),
+          // leading: IconButton(
+          //     onPressed: () => Navigator.pop(context),
+          //     icon: Icon(Icons.arrow_back)),
 
           title: Text('รายละเอียดประวัติบันทึกความดี',
               style:
@@ -43,10 +43,14 @@ class _HistoryPageState extends State<StatefulWidget> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 16, right: 16, top: 10, bottom: 14),
+                        left: 16, right: 16, top: 10, bottom: 16),
                     child: Text(
                       "รายละเอียดความดีที่คุณได้ทำ",
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Mitr',
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -58,37 +62,58 @@ class _HistoryPageState extends State<StatefulWidget> {
                           borderRadius: BorderRadius.circular(10)),
                       child: ListBody(
                         children: [
-                          Text('หัวข้อบันทึกความดี',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              )),
+                          Row(children: <Widget>[
+                            Icon(Icons.info_outline),
+                            Text('  หัวข้อบันทึกความดี',
+                                style: TextStyle(
+                                  fontFamily: 'Mitr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ]),
                           Padding(
                               padding:
-                                  EdgeInsets.only(left: 16, right: 16, top: 4),
+                                  EdgeInsets.only(left: 10, right: 10, top: 10),
                               child: Text('${data['title']}',
                                   style: TextStyle(
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                      // fontWeight: FontWeight.bold,
                                       fontFamily: 'Mitr'))),
                           SizedBox(
                             height: 18,
                           ),
-                          Text('รายละเอียดเพิ่มเติม'),
+                          Row(children: <Widget>[
+                            Icon(Icons.notes),
+                            Text('  รายละเอียดเพิ่มเติม',
+                                style: TextStyle(
+                                  fontFamily: 'Mitr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ]),
                           Padding(
                               padding:
-                                  EdgeInsets.only(left: 16, right: 16, top: 4),
+                                  EdgeInsets.only(left: 10, right: 10, top: 10),
                               child: Text('${data['name']}',
                                   style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      // fontWeight: FontWeight.bold,
                                       fontFamily: 'Mitr'))),
                           SizedBox(
                             height: 18,
                           ),
-                          Text('วันที่บันทึกข้อมูล'),
+                          Row(children: <Widget>[
+                            Icon(Icons.calendar_today),
+                            Text('  วันที่บันทึกข้อมูล',
+                                style: TextStyle(
+                                  fontFamily: 'Mitr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ]),
                           Padding(
                               padding:
-                                  EdgeInsets.only(left: 16, right: 16, top: 4),
+                                  EdgeInsets.only(left: 10, right: 16, top: 10),
                               child: Text('${data['date']}',
                                   style: TextStyle(
                                       fontSize: 18,

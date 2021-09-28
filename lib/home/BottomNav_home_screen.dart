@@ -4,6 +4,7 @@ import 'package:labroute/home/historyPage.dart';
 import 'package:labroute/model/user.dart';
 import 'package:labroute/home/Home_Page.dart';
 import 'package:labroute/screen/add_screen.dart';
+import 'package:labroute/screen/info.dart';
 
 import 'package:labroute/widget/sidemenu.dart';
 
@@ -69,6 +70,7 @@ class _BottomNavHomeState extends State<BottomNavHome> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
+        elevation: 50,
         notchMargin: 6,
         child: Container(
           height: 67,
@@ -76,10 +78,15 @@ class _BottomNavHomeState extends State<BottomNavHome> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
+                  // SizedBox(
+                  //   width: 4,
+                  // ),
                   MaterialButton(
-                    minWidth: 20,
+                    minWidth: 40,
                     onPressed: () {
                       setState(() {
                         currentScreen = HomePage(
@@ -90,27 +97,30 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
                         Icon(
                           Icons.home_outlined,
+                          // size: ,
                           color:
                               currentTab == 0 ? Colors.blue : Colors.grey[600],
                         ),
                         Text(
                           'หน้าแรก',
                           style: TextStyle(
+                            fontSize: 14,
                             fontFamily: 'Mitr',
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                             color: currentTab == 0
                                 ? Colors.blue
-                                : Colors.grey[600],
+                                : Colors.grey[800],
                           ),
                         ),
                       ],
                     ),
                   ),
                   MaterialButton(
-                    minWidth: 20,
+                    minWidth: 40,
                     onPressed: () {
                       setState(() {
                         currentScreen = HistoryPage(
@@ -130,11 +140,12 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                         Text(
                           'ประวัติ',
                           style: TextStyle(
+                            fontSize: 14,
                             fontFamily: 'Mitr',
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                             color: currentTab == 1
                                 ? Colors.blue
-                                : Colors.grey[600],
+                                : Colors.grey[800],
                           ),
                         ),
                       ],
@@ -142,21 +153,21 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                   ),
 
                   Padding(
-                      padding: EdgeInsets.only(left: 17, top: 26),
+                      padding: EdgeInsets.only(
+                        left: 1,
+                        top: 24,
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          // Icon(
-                          //   Icons.history,
-                          //   color: currentTab == 1 ? Colors.blue : Colors.grey,
-                          // ),
                           Text(
-                            'เพิ่มความดี',
+                            '   เพิ่มความดี',
                             style: TextStyle(
+                              fontSize: 14,
                               fontFamily: 'Mitr',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[600],
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.grey[800],
                             ),
                           ),
                         ],
@@ -165,9 +176,20 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                 ],
               ),
               // Right Tab bar icons
+
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  // Padding(
+                  //   padding: EdgeInsets.only(
+                  //     left: 17,
+                  //     // top: 26,
+                  //   ),
+                  // child: SizedBox(
+                  //   width: 0,
+                  // ),
+                  // ),
+                  // Padding(padding: EdgeInsets.only(left: 50)),
                   MaterialButton(
                     minWidth: 20,
                     onPressed: () {
@@ -189,23 +211,28 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                         Text(
                           'โปรไฟล์',
                           style: TextStyle(
+                            fontSize: 14,
                             fontFamily: 'Mitr',
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                             color: currentTab == 2
                                 ? Colors.blue
-                                : Colors.grey[600],
+                                : Colors.grey[800],
                           ),
                         ),
+                        //
                       ],
                     ),
                   ),
+                  SizedBox(
+                    width: 1,
+                  ),
                   MaterialButton(
-                    minWidth: 40,
+                    minWidth: 20,
                     onPressed: () {
                       setState(() {
-                        currentScreen = SideMenu(
-                            user: widget
-                                .user); // if user taps on this dashboard tab will be active
+                        currentScreen = Info();
+                        // user: widget
+                        //     .user); // if user taps on this dashboard tab will be active
                         currentTab = 3;
                       });
                     },
@@ -220,14 +247,27 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                         Text(
                           ' อื่นๆ ',
                           style: TextStyle(
+                            fontSize: 14,
                             fontFamily: 'Mitr',
                             color: currentTab == 3
                                 ? Colors.blue
-                                : Colors.grey[600],
-                            fontWeight: FontWeight.bold,
+                                : Colors.grey[800],
+                            // fontWeight: FontWeight.bold,
                             // fontFamily: 'Mitr'
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: 20,
+                            // top: 26,
+                          ),
+                          child: SizedBox(
+                            width: 0,
+                          ),
+                        ),
+                        // SizedBox(
+                        //   width: 35,
+                        // ),
                       ],
                     ),
                   )

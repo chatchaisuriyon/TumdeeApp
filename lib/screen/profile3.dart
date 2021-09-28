@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,7 +9,11 @@ import 'package:labroute/model/user.dart';
 // ignore: must_be_immutable
 class ProfileScreen3 extends StatelessWidget {
   final auth = FirebaseAuth.instance;
-  final users = FirebaseFirestore.instance.collection("users");
+
+  // final users = FirebaseFirestore.instance.collection("users");
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('users');
+  // final String;
   final User user;
   Users profile = Users();
   ProfileScreen3({this.user});
@@ -18,17 +24,10 @@ class ProfileScreen3 extends StatelessWidget {
   Color gradientEnd = Colors.yellow[500];
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
-  // CollectionReference _studentCollection =
-  //     FirebaseFirestore.instance.collection("Tumdee");
-  // CollectionReference _userCollection =
-  //     FirebaseFirestore.instance.collection("users");
-
-  // final point = FirebaseFirestore.instance.collection("users").doc(user.uid).snapshots();
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
+    final String uid = auth.currentUser.uid;
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -110,65 +109,43 @@ class ProfileScreen3 extends StatelessWidget {
                       )
                     ],
                   )),
-              // Expanded(
-              //   child:
               Padding(
-                padding: EdgeInsets.only(
-                    // height: 100,
-                    left: 20,
-                    top: 15,
-                    right: 20,
-                    bottom: 20),
-                child: StreamBuilder(
-                    stream: FirebaseFirestore.instance
-                        .collection("users")
-                        .where("score")
-                        .orderBy("score", descending: true) //จัดเรียงข้อมูล
-
-                        .snapshots(),
-                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else {
-                        return Container(
-                          height: 120,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Colors.pinkAccent,
-                                Colors.pink[400]
-                              ]),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "คะแนนความดีสะสมของคุณทั้งหมด",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  "คะแนน",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 42),
-                                ),
-                              ],
-                            ),
+                  padding: EdgeInsets.only(
+                      // height: 100,
+                      left: 20,
+                      top: 15,
+                      right: 20,
+                      bottom: 20),
+                  child: Container(
+                    height: 120,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.pinkAccent, Colors.pink[400]]),
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "คะแนนความดีสะสมของคุณทั้งหมด",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 18),
                           ),
-                        );
-                      }
-                    }),
-              ),
+                          Text(
+                            "null คะแนน ",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
               Text(
                 "🏆 อันดับผู้ใช้งานที่มีคะแนนความดีสูงสุด 🏆",
                 style: TextStyle(
-                    // fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[800],
                     fontSize: 18,
                     fontFamily: 'Mitr'),
               ),
@@ -195,16 +172,7 @@ class ProfileScreen3 extends StatelessWidget {
                               margin: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 5.0),
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    // horizontal: 5.0,
-                                    vertical: 5.0),
-                                // height: MediaQuery.of(context).size.height * 0.12,
-                                // child: Card(
-                                //   color: Colors.yellow[100],
-                                //   elevation: 3,
-                                //   margin: const EdgeInsets.symmetric(
-                                //       vertical: 6, horizontal: 10),
-
+                                padding: EdgeInsets.symmetric(vertical: 5.0),
                                 child: ListTile(
                                   leading: CircleAvatar(
                                       radius: 23,
@@ -213,11 +181,20 @@ class ProfileScreen3 extends StatelessWidget {
                                       // backgroundImage: NetworkImage(
                                       child:
                                           Image.network(document["photoUrl"])),
-                                  title: Text(document["username"]),
-                                  // + document["lname"]
+                                  title: Text(document["username"],
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color.fromRGBO(8, 8, 8, 50),
+                                          fontFamily: 'Mitr')),
                                   // ),
-                                  trailing: Text(document['score'].toString()),
-                                  // trailing: Text(document["date"]),
+                                  trailing: Text(
+                                      document['score'].toString() + ' ความดี',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color.fromRGBO(8, 8, 8, 85),
+                                          fontFamily: 'Mitr')),
                                   // onTap: () {
                                   //   Navigator.of(context).pushNamed(
                                   //       'historypage2',
@@ -238,47 +215,39 @@ class ProfileScreen3 extends StatelessWidget {
                     }
                   },
                 ),
-                //listwiew อันเดิม
-
-                // Expanded(
-                //   child: ListView.builder(
-                //     itemBuilder: (BuildContext context, int index) {
-
-                //       return Padding(
-                //         padding: EdgeInsets.only(
-                //             left: 20, right: 20, top: 10),
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //             borderRadius:
-                //                 BorderRadius.all(Radius.circular(10)),
-                //             color: Color.fromRGBO(55, 65, 104, 1),
-                //           ),
-                //           child: ListTile(
-                //             title: Text(
-                //               "Transaction $index",
-                //               style: TextStyle(
-                //                   fontWeight: FontWeight.bold,
-                //                   color: Colors.white),
-                //             ),
-                //             subtitle: Text(
-                //               "Some brief detail of transaction no $index",
-                //               style: TextStyle(color: Colors.white),
-                //             ),
-                //             contentPadding: EdgeInsets.only(
-                //                 left: 16, right: 16, top: 5, bottom: 5),
-                //             trailing: Text(
-                //               "DEBIT",
-                //               style: TextStyle(
-                //                   fontWeight: FontWeight.bold,
-                //                   color: Colors.greenAccent),
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // )
-              ))
+              )),
             ])));
   }
 }
+
+// var name;
+// Future<void> getName() async {
+//   DocumentSnapshot<Map<String, dynamic>> ds =
+//       await FirebaseFirestore.instance.collection('users').doc('uid').get();
+//   name = ds.get('score');
+// }
+
+// String name;
+// final firestore = FirebaseFirestore.instance;   //
+// FirebaseAuth auth = FirebaseAuth.instance;
+// Future<void> getName() async {
+//   final String uid = auth.currentUser.uid;
+//   DocumentSnapshot document = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+// name = document.get('score')
+// }
+
+// StreamBuilder(
+//           stream: FirebaseFirestore.instance
+//               .collection('YOUR COLLECTION NAME')
+//               .doc(id) //ID OF DOCUMENT
+//               .snapshots(),
+//         builder: (context, snapshot) {
+//         if (!snapshot.hasData) {
+//           return new CircularProgressIndicator();
+//         }
+//         var document = snapshot.data;
+//         return new Text(document["name"]);
+//      }
+//   );
+// }
+
